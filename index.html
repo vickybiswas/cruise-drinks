@@ -444,9 +444,9 @@
         </select>
         <label for="package-cost">Beverage Package Cost ($/day):</label>
         <select id="package-cost" onchange="updateDecision()">
-            <option value="30">$30</option>
+            <option value="30" selected>$30</option>
             <option value="40">$40</option>
-            <option value="50" selected>$50</option>
+            <option value="50">$50</option>
             <option value="60">$60</option>
             <option value="70">$70</option>
         </select>
@@ -522,14 +522,39 @@
             const drinkCost = drinksPerDay * 5;
             const decision = document.getElementById("decision");
             if (packageCost < drinkCost) {
-                decision.innerHTML = "🍷 Buy It! Enjoy!!";
-                decision.className = "decision-indicator buy";
-                confetti();
+              decision.innerHTML = "🍷 Buy It! Enjoy!!";
+              decision.className = "decision-indicator buy";
+              var end = Date.now() + (15 * 1000);
+              // go Buckeyes!
+              var colors = ['#bb0000', '#ffffff'];
+
+              (function frame() {
+                confetti({
+                  particleCount: 2,
+                  angle: 60,
+                  spread: 55,
+                  origin: { x: 0 },
+                  colors: colors
+                });
+                confetti({
+                  particleCount: 2,
+                  angle: 120,
+                  spread: 55,
+                  origin: { x: 1 },
+                  colors: colors
+                });
+
+                if (Date.now() < end) {
+                  requestAnimationFrame(frame);
+                }
+              }());
             } else {
                 decision.innerHTML = "🚫 Don't Buy.";
                 decision.className = "decision-indicator dont-buy";
             }
         }
+
+        updateDecision()
     </script>
 </body>
 </html>
