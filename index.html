@@ -86,8 +86,8 @@
         /* Rotated Text for DAILY DRINKS */
         .rotated-text {
           position: absolute;
-          bottom: 120px;
-          left: -95px;
+          bottom: 110px;
+          left: -90px;
           transform: rotate(-90deg);
           font-size: 2rem;
           font-weight: bold;
@@ -174,14 +174,12 @@
       transition: 0.35s;
       position: absolute;
       left: 60px;
-      bottom: 100p
+      bottom: 100px;
     }
     @supports (color: color-mix(in lch, red 1%, tan)) {
       .wrap {
         /* if color-mix is supported */
         color: color-mix(in lch, #f43e75 var(--prc), #daff47);
-        margin-left: 40px;
-        margin-bottom: 40px;
       }
     }
     .wrap:not(:focus-within):not(:hover) {
@@ -523,12 +521,12 @@
             const drinksPerDay = parseInt(document.getElementById("r").value);
             const drinkCost = drinksPerDay * 5;
             const decision = document.getElementById("decision");
-            if (packageCost >= drinkCost) {
-                decision.innerHTML = "🍷 Buy Now!";
+            if (packageCost < drinkCost) {
+                decision.innerHTML = "🍷 Buy It! Enjoy!!";
                 decision.className = "decision-indicator buy";
                 confetti();
             } else {
-                decision.innerHTML = "🚫 Don't Buy";
+                decision.innerHTML = "🚫 Don't Buy.";
                 decision.className = "decision-indicator dont-buy";
             }
         }
