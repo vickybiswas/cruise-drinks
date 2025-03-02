@@ -93,27 +93,6 @@
             font-weight: bold;
             color: white;
         }
-        /* Bottom Left Slider */
-        .bottom-left {
-            position: absolute;
-            bottom: 40px;
-            left: 30px;
-        }
-        .slider-label {
-            font-size: 18px;
-            margin-bottom: 10px;
-            color: gold;
-            font-weight: bold;
-        }
-        .bottom-left input[type="range"] {
-            width: 250px;
-            accent-color: gold;
-            -webkit-appearance: none;
-            appearance: none;
-            background: linear-gradient(to right, gold, #8b8000);
-            border-radius: 10px;
-            height: 8px;
-        }
 
         /* Decision Indicator */
         .decision-indicator {
@@ -460,7 +439,7 @@
     <div class="top-right-box">
         <h3>Cruise Details</h3>
         <label for="cruise-days">Cruise Days:</label>
-        <select id="cruise-days">
+        <select id="cruise-days" onchange="updateDecision()">
             <option value="3">3</option>
             <option value="5">5</option>
             <option value="7">7</option>
@@ -468,7 +447,7 @@
             <option value="14">14</option>
         </select>
         <label for="package-cost">Beverage Package Cost ($/day):</label>
-        <select id="package-cost">
+        <select id="package-cost" onchange="updateDecision()">
             <option value="30">$30</option>
             <option value="40">$40</option>
             <option value="50" selected>$50</option>
@@ -486,7 +465,7 @@
      <!-- Slider -->
      <div class="wrap" role="group" aria-label="slider with ruler" style="--min: 0; --val: 10; --max: 20">
        <!-- slider:-->
-       <input id="r" type="range" list="l" max="20"/>
+       <input id="r" type="range" list="l" max="20" onchange="updateDecision()"/>
        <!-- value display:-->
        <output for="r"></output>
        <!-- ruler:-->
